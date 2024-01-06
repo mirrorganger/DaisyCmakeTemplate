@@ -118,7 +118,9 @@ FUNCTION(add_daisy_firmware)
         -Wl,--print-memory-usage
     )
 
-	install(TARGETS ${FIRMWARE_NAME} DESTINATION ${CMAKE_SOURCE_DIR}/products)
+	# install(TARGETS ${FIRMWARE_NAME} DESTINATION ${CMAKE_SOURCE_DIR}/products)
+
+    file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/products)
 
     add_custom_command(TARGET ${FIRMWARE_NAME} POST_BUILD
         COMMAND ${CMAKE_OBJCOPY}

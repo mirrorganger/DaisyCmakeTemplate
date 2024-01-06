@@ -1,0 +1,62 @@
+{
+    "version": 7,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 26,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "daisy-base",
+            "hidden": true,
+            "displayName": "Daisy Seed default config",
+            "description": "Default build configuration for daisy seed",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE":"Debug",
+                "CMAKE_TOOLCHAIN_FILE":{
+                    "type": "FILEPATH",
+                    "value" : "${sourceDir}/cmake/arm-cortex-gnu-toolchain.cmake"
+                },
+                "APP_TYPE":"BOOT_NONE"
+            } 
+        },
+        {
+            "name": "daisy-debug",
+            "displayName": "Daisy Debug",
+            "inherits" : "daisy-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE":"Debug",
+                "APP_TYPE":"BOOT_SRAM"
+            }
+
+        },
+        {
+            "name": "daisy-release",
+            "displayName": "Daisy Release",
+            "inherits" : "daisy-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE":"Release"
+            }
+
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "daisy-build-base",
+            "hidden": true,
+            "configurePreset": "daisy-debug",
+            "jobs": 4
+        },
+        {
+            "name": "daisy-build-debug",
+            "inherits" : "daisy-build-base"
+        },
+        {
+            "name": "daisy-build-release",
+            "inherits" : "daisy-build-base",
+            "configurePreset": "daisy-release"
+        }
+    ]
+}
