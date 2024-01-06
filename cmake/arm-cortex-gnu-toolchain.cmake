@@ -1,5 +1,3 @@
-#  https://ryanwinter.org/embedded-development-with-cmake-and-arm-gcc/
-
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 # target triplet machine-vendor-operating-system.
@@ -29,8 +27,6 @@ set(CMAKE_C_ARCHIVE_CREATE "<CMAKE_AR> qcs <TARGET> <LINK_FLAGS> <OBJECTS>")
 set(CMAKE_C_ARCHIVE_FINISH   true)
 set(CMAKE_CXX_ARCHIVE_CREATE "<CMAKE_AR> qcs <TARGET> <LINK_FLAGS> <OBJECTS>")
 set(CMAKE_CXX_ARCHIVE_FINISH   true)
-
-
 
 
 #---------------------------------------------------------------------------------------

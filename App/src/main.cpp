@@ -54,10 +54,8 @@ int main(void)
     osc.SetFreq(100);
     osc.SetAmp(0.25);
 
-
     // start callback
     hw.StartAudio(AudioCallback);
-
 
     while(1) {}
 }
